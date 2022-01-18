@@ -1,0 +1,15 @@
+{
+  "name": "meli-front-end",
+  "version": "1.0.0",
+  "description": "It is a mono repository by MELI front end assesment 2022",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "juliojacg@hotmail.com",
+  "license": "ISC",
+  "workspaces": [
+    "meli-finder"
+  ]
+}
