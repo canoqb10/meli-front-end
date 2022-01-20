@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.prefix = exports.meliItemNotFoundImgURL = exports.meliItemDescriptionURL = exports.meliItemDetailURL = exports.meliCategoriesURL = exports.meliQueryURL = exports.meliSitesURL = exports.meliBaseURL = exports.queryMaxResults = exports.apiPort = void 0;
+require("dotenv/config");
+exports.apiPort = Number(process.env.API_PORT) || 3001;
+exports.queryMaxResults = Number(process.env.API_QUERY_MAX_RESULTS) || 4;
+exports.meliBaseURL = process.env.MELI_BASE_URL || 'https://api.mercadolibre.com/';
+exports.meliSitesURL = process.env.MELI_SITES_URL || 'sites/MLA/';
+exports.meliQueryURL = process.env.MELI_QUERY_URL || 'search';
+exports.meliCategoriesURL = process.env.MELI_CATEGORIES_URL || 'categories';
+exports.meliItemDetailURL = process.env.MELI_ITEM_DETAIL_URL || 'items/:id';
+exports.meliItemDescriptionURL = process.env.MELI_ITEM_DESCRIPTION_URL || '/description';
+exports.meliItemNotFoundImgURL = process.env.MELI_ITEM_NOT_FOUND_IMG || '';
+exports.prefix = process.env.PREFIX || 'items';

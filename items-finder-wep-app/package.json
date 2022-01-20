@@ -1,5 +1,5 @@
 {
-  "name": "@meli/finder",
+  "name": "@meli/items-finder",
   "private": true,
   "scripts": {
     "dev": "next dev",

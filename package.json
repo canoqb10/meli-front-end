@@ -10,6 +10,7 @@
   "author": "juliojacg@hotmail.com",
   "license": "ISC",
   "workspaces": [
-    "meli-finder"
+    "items-finder-wep-app",
+    "services/items"
   ]
 }
