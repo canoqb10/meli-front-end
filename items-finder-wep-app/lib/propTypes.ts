@@ -47,11 +47,13 @@ export type ItemProps = {
 
 export type BreadCumbProps = {
     categories: Array<string>
-    separator?: JSX.Element
+    separator?: string
 }
 
 export type LoaderProps = {
     message?: string
+    active: boolean
+    errorMessage?: string
 }
 
 export type SearchBarProps = { search: string }
@@ -70,4 +72,26 @@ export type DetailProps = {
 }
 export type SearchPageProps = {
     search: string
+}
+
+export type ErrorPlatform = {
+    statusCode: number
+    errorCode: string
+    message: string
+    reason?: Error | any
+}
+
+export type SnackbarProps = {
+    value?: boolean
+    message: string
+    type: 'error' | 'warning' | 'info' | 'success'
+    duration: number
+}
+
+export type FeedbackContextProps = {
+    showMessage: (
+        message: string,
+        type: 'error' | 'warning' | 'info' | 'success',
+        duration: number,
+    ) => void
 }

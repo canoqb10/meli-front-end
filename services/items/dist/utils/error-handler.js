@@ -30,11 +30,11 @@ class InternalServerError extends PlatformError {
     }
 }
 exports.InternalServerError = InternalServerError;
-function errorHandler(error, res) {
+function errorHandler(error, request, response, next) {
     if (error.statusCode === 404 || error.statusCode === 400) {
-        res.status(error.statusCode).send(error);
+        return response.status(error.statusCode).send(error);
     }
-    return res.status(500).send(new InternalServerError());
+    return response.status(500).send(new InternalServerError());
 }
 exports.errorHandler = errorHandler;
 exports.default = errorHandler;

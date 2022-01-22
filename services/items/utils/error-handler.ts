@@ -1,5 +1,4 @@
-import express from 'express'
-
+import { Request, Response, NextFunction } from 'express';
 export class PlatformError extends Error {
     constructor(
       readonly statusCode: number,
@@ -33,12 +32,12 @@ export class InternalServerError extends PlatformError {
     }
 }
   
-export function errorHandler(error: PlatformError, res: express.Response) { 
+export function errorHandler(error: PlatformError, request: Request, response: Response, next: NextFunction) { 
   if (error.statusCode === 404 || error.statusCode === 400 ) { 
-    res.status(error.statusCode).send(error)
+    return response.status(error.statusCode).send(error)
   }
     
-  return res.status(500).send(new InternalServerError())
+  return response.status(500).send(new InternalServerError())
 }
 
 export default errorHandler

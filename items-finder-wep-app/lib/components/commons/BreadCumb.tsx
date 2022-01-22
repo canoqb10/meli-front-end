@@ -1,7 +1,6 @@
 import { Breadcrumbs, Link as Linked  } from '@material-ui/core'
 import Link from 'next/link'
 import classnames from 'classnames'
-import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import { BreadCumbProps } from '../../propTypes'
 
 /**
@@ -11,9 +10,9 @@ import { BreadCumbProps } from '../../propTypes'
  */
 export const BreadCumb = ({ categories, separator = '›' }: BreadCumbProps): JSX.Element => {
     if (!Array.isArray(categories) || categories.length === 0 ) {
-        return null
+        return <div className="breadcumb-root" />
     }
-
+    
     return (
         <div className="breadcumb-root">
             <Breadcrumbs separator={separator} aria-label="breadcrumb" className="breadcumb-container">

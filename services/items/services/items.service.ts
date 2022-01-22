@@ -61,6 +61,8 @@ export async function getItemById(id: string) {
  * @returns <{data: any, status:string}>
  */
 export async function getItemDescriptionById(id: string) {
+    console.log('url1', meliItemDetailURL.replace(':id', id))
+    console.log('url2', `${meliItemDetailURL.replace(':id', id)}${meliItemDescriptionURL}`)
     const { data, status } = await http.get(
         `${meliItemDetailURL.replace(':id', id)}${meliItemDescriptionURL}`
     )

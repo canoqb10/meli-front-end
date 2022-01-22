@@ -15,11 +15,8 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
+const express_1 = require("express");
 const package_json_1 = require("../package.json");
 const items_service_1 = require("../services/items.service");
 const utils_1 = require("../utils");
@@ -29,7 +26,7 @@ const utils_1 = require("../utils");
 class ItemsController {
     constructor() {
         this.path = '/items';
-        this.router = express_1.default.Router();
+        this.router = (0, express_1.Router)();
         this.searchItems = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             var e_1, _a;
             try {
@@ -84,10 +81,10 @@ class ItemsController {
             }
             catch (error) {
                 console.log('error', error);
-                (0, utils_1.errorHandler)(error, res);
+                return next(error);
             }
         });
-        this.searchItem = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.searchItem = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { id } = req.params;
                 if (!id) {
@@ -127,7 +124,7 @@ class ItemsController {
             }
             catch (error) {
                 console.log('error', error);
-                (0, utils_1.errorHandler)(error, res);
+                return next(error);
             }
         });
         this.intializeRoutes();

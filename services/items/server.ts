@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import errorHandler from './utils/error-handler'
 
 const options: cors.CorsOptions = {
   origin: true,
@@ -25,6 +26,7 @@ class App {
     this.app.use(express.json())
     
     this.initializeControllers(controllers)
+    this.initializeErrorHandling()
   }
  
   private initializeControllers(controllers: any) {
@@ -33,6 +35,10 @@ class App {
     })
   }
  
+  private initializeErrorHandling() {
+    this.app.use(errorHandler);
+  }
+
   public listen() {
     this.app.listen(this.port, () => {
       console.log(`App listening on the port ${this.port}`)

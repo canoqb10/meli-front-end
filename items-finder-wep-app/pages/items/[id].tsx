@@ -5,20 +5,27 @@ import { getItem } from '../../lib/services'
 import { BreadCumb, Loader } from '../../lib/components/commons'
 import { ItemResult, DetailProps } from '../../lib/propTypes'
 import { formatAmount } from '../../lib/helpers'
+import { useFeedback } from '../../lib/providers'
 
 /**
- * Component for item detail
+ * @description item detail page
  * @param DetailProps 
  * @returns JSX.Element
  */
 export const DetailPage = ({ id } :DetailProps): JSX.Element => {
     const [info, setInfo] = useState<ItemResult>(null)
+    const [loader, setLoader] = useState<boolean>(true)
+    const { showMessage } = useFeedback()
     async function searchItems() {
         try {
+            setLoader(true)
             const data = await getItem<ItemResult>('items', id)
             setInfo(data)
         } catch (e) {
+            showMessage('Tenemos problemas al mostrar tu articulo', 'error', 5000)
             console.log('error',e)
+        } finally { 
+            setLoader(false)
         }
     }
 
@@ -44,7 +51,7 @@ export const DetailPage = ({ id } :DetailProps): JSX.Element => {
         <Page title="Item">
             <BreadCumb categories={info?.categories} />
             <Paper>
-                {!info?.item ? (<Loader />) : (
+                {!info?.item ? (<Loader active={loader} errorMessage="Artículo no encontrado" />) : (
                     <div className="detail-root">
                         <div className="detail-buy-info">
                             <div className="detail-image">

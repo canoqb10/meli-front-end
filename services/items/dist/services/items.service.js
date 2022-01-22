@@ -71,6 +71,8 @@ exports.getItemById = getItemById;
  */
 function getItemDescriptionById(id) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log('url1', utils_1.meliItemDetailURL.replace(':id', id));
+        console.log('url2', `${utils_1.meliItemDetailURL.replace(':id', id)}${utils_1.meliItemDescriptionURL}`);
         const { data, status } = yield utils_1.http.get(`${utils_1.meliItemDetailURL.replace(':id', id)}${utils_1.meliItemDescriptionURL}`);
         return { data, status };
     });

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ItemProps } from '../../propTypes'
 import { formatAmount } from '../../helpers'
 /**
- * Component to show a item into results section
+ * @description Shows a item into results section
  * @params ItemProps
  * @returns JSX.Element
  */

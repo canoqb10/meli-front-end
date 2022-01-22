@@ -3,14 +3,14 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { CssBaseline } from '@material-ui/core'
 
 import '@fontsource/roboto'
 import 'modern-normalize'
 import '../styles/main.scss'
 
 import { Layout } from '../lib/layout/layout'
-import { CssBaseline } from '@material-ui/core'
-
+import { FeedbackProvider } from '../lib/providers'
 
 /**
  * Entry point component for the app
@@ -25,7 +25,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       </Head>
       <CssBaseline />
       <Layout>
-        <Component {...pageProps} />
+        <FeedbackProvider>
+          <Component {...pageProps} />
+        </FeedbackProvider>
       </Layout>
     </>
   )

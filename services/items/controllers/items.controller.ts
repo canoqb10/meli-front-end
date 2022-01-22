@@ -1,4 +1,4 @@
-import express from 'express';
+import { Request, Response, NextFunction, Router } from 'express';
 import { author } from '../package.json'
 
 import {
@@ -22,7 +22,7 @@ import {
  */
 class ItemsController {
   public path = '/items';
-  public router = express.Router();
+  public router = Router();
  
 
   constructor() {
@@ -34,7 +34,7 @@ class ItemsController {
     this.router.get(`${this.path}/:id`, this.searchItem);
   }
  
-  searchItems = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  searchItems = async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { search } = req.query
         console.log('search items', search)
@@ -80,12 +80,11 @@ class ItemsController {
         res.status(200).send(results)
       } catch (error: PlatformError | any) {
         console.log('error', error)
-        errorHandler(error, res)
-      }
-    
+        return next(error)
+      } 
   }
 
-  searchItem = async (req: express.Request, res: express.Response) => {
+  searchItem = async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { id } = req.params
         if (!id) {
@@ -127,7 +126,7 @@ class ItemsController {
         res.status(200).send(result)
       } catch (error: PlatformError | any) {
         console.log('error', error)
-        errorHandler(error, res)
+        return next(error)
       }
     
   }

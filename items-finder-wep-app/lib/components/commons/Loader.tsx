@@ -6,9 +6,13 @@ import { LoaderProps } from '../../propTypes'
  * @param LoaderProps 
  * @returns JSX.Element
  */
-export const Loader = ({ message }: LoaderProps): JSX.Element => {
+export const Loader = ({ message, active, errorMessage }: LoaderProps): JSX.Element => {
+    let display = <><CircularProgress color="primary" /> {message || 'Cargando ...'} </>
+    if (!active) { 
+        display = <>{errorMessage}</>
+    }
     return (
-        <div className="loader"><CircularProgress color="primary" /> { message || 'Cargando ...' }</div>
+        <div className="loader">{display}</div>
     )    
 }
 

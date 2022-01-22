@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const error_handler_1 = __importDefault(require("./utils/error-handler"));
 const options = {
     origin: true,
     preflightContinue: true,
@@ -24,11 +25,15 @@ class App {
         this.app.use((0, cors_1.default)(options));
         this.app.use(express_1.default.json());
         this.initializeControllers(controllers);
+        this.initializeErrorHandling();
     }
     initializeControllers(controllers) {
         controllers.forEach((controller) => {
             this.app.use('/', controller.router);
         });
+    }
+    initializeErrorHandling() {
+        this.app.use(error_handler_1.default);
     }
     listen() {
         this.app.listen(this.port, () => {
