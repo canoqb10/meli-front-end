@@ -21,7 +21,7 @@ import {
  * Items controller class, definition of endpoints
  */
 class ItemsController {
-  public path = '/items';
+  public path = '/api/items';
   public router = Router();
  
 
@@ -87,10 +87,17 @@ class ItemsController {
   searchItem = async (req: Request, res: Response, next: NextFunction) => {
       try {
         const { id } = req.params
-        if (!id) {
-          throw new BadRequestError('ID is required')
-        }
+        let idMeli: string | undefined = id
+        
         console.log('find item', id)
+        
+        if (id === 'undefined') { 
+          idMeli = undefined
+        }
+
+        if (!idMeli) {
+          throw new BadRequestError('item ID is required')
+        }
         const { data, status } = await getItemById(id)
         console.log('item found', data)
         const resDes = await getItemDescriptionById(id)

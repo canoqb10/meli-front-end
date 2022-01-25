@@ -25,7 +25,7 @@ const utils_1 = require("../utils");
  */
 class ItemsController {
     constructor() {
-        this.path = '/items';
+        this.path = '/api/items';
         this.router = (0, express_1.Router)();
         this.searchItems = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             var e_1, _a;
@@ -87,10 +87,14 @@ class ItemsController {
         this.searchItem = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const { id } = req.params;
-                if (!id) {
-                    throw new utils_1.BadRequestError('ID is required');
-                }
+                let idMeli = id;
                 console.log('find item', id);
+                if (id === 'undefined') {
+                    idMeli = undefined;
+                }
+                if (!idMeli) {
+                    throw new utils_1.BadRequestError('item ID is required');
+                }
                 const { data, status } = yield (0, items_service_1.getItemById)(id);
                 console.log('item found', data);
                 const resDes = yield (0, items_service_1.getItemDescriptionById)(id);

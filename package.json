@@ -12,5 +12,10 @@
   "workspaces": [
     "items-finder-wep-app",
     "services/items"
-  ]
+  ],
+  "devDependencies": {
+    "@meli/items-service": "file:services/items",
+    "@types/supertest": "^2.0.11",
+    "supertest": "^6.2.2"
+  }
 }
