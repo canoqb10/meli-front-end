@@ -5,8 +5,21 @@ import React from 'react'
 
 import { render } from '../../testUtils'
 import ItemPreview from '../../lib/components/items/ItemsPreview'
+import { fireEvent } from '@testing-library/react'
 
-describe('Item Preview Component', () => { 
+
+
+const mock = jest.mock('next/router', () => ({ 
+    useRouter: () => ({ 
+        query: { id: '1'},
+        push: (p) => {
+            console.log('p', p)
+            return p
+        }
+    })
+}))
+
+describe('Item Preview Component', () => {
     it('render contents', () => { 
         const item = {
             id: 'ML2807653',
@@ -25,9 +38,12 @@ describe('Item Preview Component', () => {
             description: 'Una bolsa de basura resitente',
         }
         
-        const component = render(<ItemPreview item={item} />, {})
-        
-        console.log('component', component)
+        const component = render(<ItemPreview item={item} />, { options: { mock } })
+        const link = component.getByText(item.title)
+        component.getByText(item.location)
+        // fireEvent.click(link)
+        // console.log('mock', mock)
+        // expect(mock).
     })
 })
 

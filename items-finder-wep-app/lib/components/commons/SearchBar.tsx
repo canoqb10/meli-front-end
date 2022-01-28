@@ -10,7 +10,7 @@ import { SearchBarProps } from '../../propTypes'
  * @returns JSX.Element 
  */
 export const SearchBar = ({ search }: SearchBarProps) => {
-    const [value, setValue] = useState(null)
+    const [value, setValue] = useState('')
     const router = useRouter()
 
     useEffect(() => {
@@ -42,7 +42,8 @@ export const SearchBar = ({ search }: SearchBarProps) => {
                     <TextField
                         className="search-text-field"
                         placeholder="Nunca dejes de buscar"
-                        variant="outlined" value={value}
+                        variant="outlined"
+                        value={value}
                         onChange={(e) => setValue(e.target.value)}
                         fullWidth
                         InputProps={{

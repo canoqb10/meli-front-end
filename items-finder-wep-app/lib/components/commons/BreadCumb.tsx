@@ -18,7 +18,7 @@ export const BreadCumb = ({ categories, separator = '›' }: BreadCumbProps): JS
             <Breadcrumbs separator={separator} aria-label="breadcrumb" className="breadcumb-container">
             {
                     categories.map((category, i) => (
-                    <Link href={`/items?search=${category}`}>
+                    <Link href={`/items?search=${category}`} key={`bread-cumb-${i}`}>
                         <Linked color="inherit" className={classnames('breadcumb-text', { bold: i === categories.length })}>
                           {category}
                         </Linked>

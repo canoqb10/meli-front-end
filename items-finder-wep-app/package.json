@@ -43,6 +43,7 @@
     "sass": "^1.36.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.16.7",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^13.5.0",

@@ -55,7 +55,7 @@ describe(`GET ${URL}?search`, () => {
                 return done(err);
             expect(res.body.author.name).toBe(author);
             expect(res.body.items.length).toBe(0);
-            expect(res.body.items.length).toBe(0);
+            expect(res.body.categories.length).toBe(0);
             done();
         });
     });
@@ -71,6 +71,16 @@ describe(`GET ${URL}?search`, () => {
             expect(res.body.author.name).toBe(author);
             expect(res.body.categories.length).toBeGreaterThanOrEqual(0);
             expect(res.body.categories).toContain(category);
+            expect(res.body.items[0].id).toBeDefined();
+            expect(res.body.items[0].condition).toBeDefined();
+            expect(res.body.items[0].free_shipping).toBeDefined();
+            expect(res.body.items[0].location).toBeDefined();
+            expect(res.body.items[0].picture).toBeDefined();
+            expect(res.body.items[0].title).toBeDefined();
+            expect(res.body.items[0].price).toBeDefined();
+            expect(res.body.items[0].price.amount).toBeDefined();
+            expect(res.body.items[0].price.currency).toBeDefined();
+            expect(res.body.items[0].price.decimals).toBeDefined();
             done();
         });
     });

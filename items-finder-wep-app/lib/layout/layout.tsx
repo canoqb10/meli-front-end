@@ -13,7 +13,7 @@ console.log('meliIcon', meliIcon)
 export const Layout = ({ children }: PropsWithChildren<LayoutProps>): JSX.Element => {
   return (
     <div id="layout-container">
-      <Head children={undefined}>
+      <Head>
         <>
           <title>MELI-FINDER</title>
           <link rel="icon" href={meliIcon} />
