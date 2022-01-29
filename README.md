@@ -102,11 +102,11 @@ The api app runs in http://localhost:3001
 
 Unit tests and integration tests suites are configured
 
-run items service tests
+Run items service tests
 
 `npm run test -w @meli/items-service`
 
-run items finder tests
+Run items finder tests
 
 `npm run test -w @meli/items-finder`
 
