@@ -2,3 +2,8 @@ node_modules/
 .dist
 cdk.out
 tmp/
+services/items/node_modules
+services/items/dist
+items-finde-web-app/.next
+items-finde-web-app/coverage
+items-finde-web-app/node_modules

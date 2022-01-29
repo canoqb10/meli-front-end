@@ -10,12 +10,16 @@
   "author": "juliojacg@hotmail.com",
   "license": "ISC",
   "workspaces": [
-    "items-finder-wep-app",
+    "items-finder",
     "services/items"
   ],
   "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@meli/items-finder": "file:items-finder",
     "@meli/items-service": "file:services/items",
     "@types/supertest": "^2.0.11",
+    "moxios": "^0.4.0",
+    "sinon": "^13.0.0",
     "supertest": "^6.2.2"
   }
 }

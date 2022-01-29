@@ -26,8 +26,8 @@ The folder structure in the app, it should look something like:
 ├── .prettierignore
 ├── .eslintrc.json
 ├── .eslintignore
-├── meli-finder
-│   ├── .next
+├── meli-items-finder
+│   ├── __tests__
 │   ├── lib
 │   ├── pages
 │   ├── public
@@ -39,31 +39,32 @@ The folder structure in the app, it should look something like:
 │   ├── .eslintignore
 │   ├── .prettierrc.json
 │   ├── .prettierignore
+│   ├── babel.config.js
 │   ├── ignore.eslintrc.json
 │   ├── jest.config.js
+│   ├── jest.setup.js
 │   ├── next-env.d.ts
 │   ├── next.config.js
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── robots.txt
 │   ├── sitemap.xml
+│   ├── testUtils.ts
 │   └── tsconfig.json
-├── meli-middlend
-│   ├── controllers
-│   ├── dist
-│   ├── node_modules
-│   ├── services
-│   ├── utils
-│   ├── .env
-│   ├── index.ts
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── server.ts
-│   └── index.ts
-├── README.md
-└── node_modules
-    └── [...]
-
+├── services
+│   ├── items
+│   │   ├── __tests__
+│   │   ├── controllers
+│   │   ├── services
+│   │   ├── utils
+│   │   ├── .env
+│   │   ├── index.ts
+│   │   ├── jest.config.js
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── server.ts
+│       └── index.ts
+└── README.md
 ```
 
 ## Set Up Project
@@ -84,18 +85,30 @@ In the root folder
 
 Start server of the meli-finder
 
-`npm run build -w @meli/finder`
-`npm run start -w @meli/finder`
+`npm run build -w @meli/items-finder`
+`npm run start -w @meli/items-finder`
 
 The web app runs in http://localhost:3000
 
 ## Boot API
-Start the server meli-middlend
+Start the server to items service
 
-`npm run build -w @meli/middlend`
-`npm run start -w @meli/middlend`
+`npm run build -w @meli/items-service`
+`npm run start -w @meli/items-service`
 
 The api app runs in http://localhost:3001
+
+## Testing
+
+Unit tests and integration tests suites are configured
+
+run items service tests
+
+`npm run test -w @meli/items-service`
+
+run items finder tests
+
+`npm run test -w @meli/items-finder`
 
 ## Author
 
