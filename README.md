@@ -1,4 +1,4 @@
-This Project is a Front End Practice Test
+This is a Project related to MeLi technical challenge to Front-End 
 
 It is structured into a Javascript Mono Repository
 
