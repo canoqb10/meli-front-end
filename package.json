@@ -1,6 +1,6 @@
 {
   "name": "meli-front-end",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "It is a mono repository by MELI front end assesment 2022",
   "main": "index.js",
   "scripts": {
