@@ -71,8 +71,8 @@ The folder structure in the app, it should look something like:
 
 Is required the next dependencies for run the app:
 
-    node 12.x.x or higher
-    npm 7.x.x or higher
+    node 14.19.0 
+    npm 7.24.2 
 
 Install dependencies
 
